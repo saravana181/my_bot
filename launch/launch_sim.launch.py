@@ -31,6 +31,14 @@ def generate_launch_description():
                 )]),
     )
 
+    twist_mux_params = os.path.join(get_package_share_directory(package_name),'config','twist_mux.yaml')
+    twist_mux = Node(
+            package="twist_mux",
+            executable="twist_mux",
+            parameters=[twist_mux_params, {'use_sim_time': True}],
+            remappings=[('/cmd_vel_out','/diff_cont/cmd_vel_unstamped')]
+        )
+
     gazebo_params_file = os.path.join(
                   get_package_share_directory(package_name),'config','gazebo_params.yaml')
 
@@ -53,7 +61,7 @@ def generate_launch_description():
         arguments=["diff_cont"],
     )
 
-    delayed_diff_drive_spawner = TimerAction(period=10.0, actions=[diff_drive_spawner])
+    delayed_diff_drive_spawner = TimerAction(period=15.0, actions=[diff_drive_spawner])
 
     joint_broad_spawner = Node(
         package="controller_manager",
@@ -61,7 +69,7 @@ def generate_launch_description():
         arguments=["joint_broad"],
     )
 
-    delayed_joint_broad_spawner = TimerAction(period=10.0, actions=[joint_broad_spawner])
+    delayed_joint_broad_spawner = TimerAction(period=15.0, actions=[joint_broad_spawner])
 
     # Launch them all!
     return LaunchDescription([
@@ -70,5 +78,6 @@ def generate_launch_description():
         spawn_entity,
         rplidar,
         delayed_diff_drive_spawner,
-        delayed_joint_broad_spawner
+        delayed_joint_broad_spawner,
+        twist_mux
     ])

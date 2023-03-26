@@ -6,7 +6,7 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
-        - /Map1
+        - /Map1/Topic1
       Splitter Ratio: 0.5
     Tree Height: 549
   - Class: rviz_common/Selection
@@ -86,25 +86,24 @@ Visualization Manager:
       Show Names: false
       Tree:
         map:
-          {}
-        odom:
-          base_link:
-            base_footprint:
-              {}
-            chassis:
-              camera_link:
-                camera_link_optical:
+          odom:
+            base_link:
+              base_footprint:
+                {}
+              chassis:
+                camera_link:
+                  camera_link_optical:
+                    {}
+                caster_wheel:
                   {}
-              caster_wheel:
+                face_link:
+                  {}
+                laser_frame:
+                  {}
+              left_wheel:
                 {}
-              face_link:
+              right_wheel:
                 {}
-              laser_frame:
-                {}
-            left_wheel:
-              {}
-            right_wheel:
-              {}
       Update Interval: 0
       Value: true
     - Alpha: 1
@@ -222,7 +221,7 @@ Visualization Manager:
       Name: Map
       Topic:
         Depth: 5
-        Durability Policy: Volatile
+        Durability Policy: Transient Local
         Filter size: 10
         History Policy: Keep Last
         Reliability Policy: Reliable

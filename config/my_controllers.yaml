@@ -12,7 +12,7 @@ controller_manager:
 diff_cont:
   ros__parameters:
 
-    use_sim_time: true
+    # use_sim_time: true
     
     publish_rate: 30.0
 

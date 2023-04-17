@@ -34,7 +34,7 @@ def generate_launch_description():
                 )]),
     )
 
-    delayed_rplidar = TimerAction(period=5.0, actions=[rplidar])
+    delayed_rplidar = TimerAction(period=1.0, actions=[rplidar])
 
     joystick = IncludeLaunchDescription(
                 PythonLaunchDescriptionSource([os.path.join(
